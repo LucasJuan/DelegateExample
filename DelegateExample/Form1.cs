@@ -29,32 +29,34 @@ namespace DelegateExample
         Calcular Subtrair = new Calcular(calc.Subtrair);
         Calcular Multiplicar = new Calcular(calc.Multiplicar);
         Calcular Dividir = new Calcular(calc.Dividir);
+        // adicionamos a forma de chamada em 1 Delegate para chamar duas funções ao mesmo tempo
+        Calcular MultiCast = new Calcular(calc.Somar) + new Calcular(calc.Multiplicar);
         private void btnSomar_Click(object sender, EventArgs e)
         {
-            valor1 = Convert.ToInt32(txtV1.Text);
-            valor2 = Convert.ToInt32(txtV2.Text);
+            valor1 = !string.IsNullOrEmpty(txtV1.Text)? Convert.ToInt32(txtV1.Text):0;
+            valor2 = !string.IsNullOrEmpty(txtV2.Text) ? Convert.ToInt32(txtV2.Text) : 0;
             txtResultado.Text = Somar(valor1, valor2).ToString();
         }
 
         private void btnSubtrair_Click(object sender, EventArgs e)
         {
-            valor1 = Convert.ToInt32(txtV1.Text);
-            valor2 = Convert.ToInt32(txtV2.Text);
+            valor1 = !string.IsNullOrEmpty(txtV1.Text) ? Convert.ToInt32(txtV1.Text) : 0;
+            valor2 = !string.IsNullOrEmpty(txtV2.Text) ? Convert.ToInt32(txtV2.Text) : 0;
             txtResultado.Text = Subtrair(valor1, valor2).ToString();
         }
 
         private void btnMultiplicar_Click(object sender, EventArgs e)
         {
 
-            valor1 = Convert.ToInt32(txtV1.Text);
-            valor2 = Convert.ToInt32(txtV2.Text);
+            valor1 = !string.IsNullOrEmpty(txtV1.Text) ? Convert.ToInt32(txtV1.Text) : 0;
+            valor2 = !string.IsNullOrEmpty(txtV2.Text) ? Convert.ToInt32(txtV2.Text) : 0;
             txtResultado.Text = Multiplicar(valor1, valor2).ToString();
         }
 
         private void btnDividir_Click(object sender, EventArgs e)
         {
-            valor1 = Convert.ToInt32(txtV1.Text);
-            valor2 = Convert.ToInt32(txtV2.Text);
+            valor1 = !string.IsNullOrEmpty(txtV1.Text) ? Convert.ToInt32(txtV1.Text) : 0;
+            valor2 = !string.IsNullOrEmpty(txtV2.Text) ? Convert.ToInt32(txtV2.Text) : 0;
             txtResultado.Text = Dividir(valor1, valor2).ToString();
 
         }
@@ -64,6 +66,14 @@ namespace DelegateExample
             txtV1.Text = "";
             txtV2.Text = "";
             txtResultado.Text = "";
+        }
+        // exemplo Multicast
+        private void button1_Click(object sender, EventArgs e)
+        {
+            valor1 = !string.IsNullOrEmpty(txtV1.Text) ? Convert.ToInt32(txtV1.Text) : 0;
+            valor2 = !string.IsNullOrEmpty(txtV2.Text) ? Convert.ToInt32(txtV2.Text) : 0;
+            txtResultado.Text = MultiCast(valor1, valor2).ToString();
+
         }
     }
 }

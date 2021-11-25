@@ -38,7 +38,16 @@ namespace DelegateExample
         //e possui a assinatura EXATA do delegate
         public int Dividir(int value1, int value2)
         {
-            return value1 / value2;
+            try
+            {
+                return value1 / value2;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+             
         }
     }
 }
